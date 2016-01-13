@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>My Site</title>
+</head>
+<body>
+    <h1>Item List</h1>
+    <div id="main">
+        <p><a href="{% url 'ns:item-create' %}">Go CreateView</a></p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>UnitPrice</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for obj in object_list %}
+                    <tr>
+                        <td>{{ obj.id }}</td>
+                        <td>{{ obj.name }}</td>
+                        <td>{{ obj.unit_price }}</td>
+                        <td><a href="{% url 'ns:item-detail' obj.id %}">Go DetailView</a></td>
+                        <td><a href="{% url 'ns:item-update' obj.id %}">Go UpdateView</a></td>
+                        <td><a href="{% url 'ns:item-delete' obj.id %}">Go DeleteView</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
